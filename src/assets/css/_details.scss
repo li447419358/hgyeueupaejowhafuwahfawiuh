@@ -1,0 +1,249 @@
+.details_list {
+    .uploader__files {
+        list-style: none;
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        overflow: hidden;
+        li {
+            float: left;
+            width: 25vw;
+            height: 25vw;
+            position: relative;
+            .img_list {
+                padding: 1vw;
+                img {
+                    width: 23vw;
+                    height: 23vw;
+                }
+            }
+            .img_type {
+                width: 23vw;
+                position: absolute;
+                bottom: 1vw;
+                font-size: 14px;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                background: rgba(0, 0, 0, .5);
+                color: #eee;
+            }
+            i.remove {
+                display: block;
+                width: 16px;
+                height: 16px;
+                position: absolute;
+                top: -2px;
+                right: 2px;
+                color: red;
+                &:before {
+                    vertical-align: top;
+                    background: #fff;
+                    border-radius: 11px;
+                }
+            }
+        }
+        .chaibao_add {
+            text-align: center;
+            line-height: 25vw;
+            .iconfont {
+                font-size: 20vw;
+                color: #999;
+            }
+        }
+    }
+}
+
+.list_item-position {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.cargo_title {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    b {
+        color: $brand-color;
+    }
+    .cargo_title_right {
+        float: right;
+        font-size: 14px;
+        color: #aaa;
+    }
+}
+
+.title_bor {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.cargoLIST {
+    padding-bottom: 40px;
+    .deliver_cargo_list .cargo_title {
+        padding: 10px 15px 5px;
+    }
+    .deliver_cargo_list .cargo_content {
+        padding: 0px 15px 10px;
+    }
+    .yiku_cargos {
+        padding: 5px 15px;
+        .vux-label,
+        .vux-label-desc {
+            font-size: 12px;
+            color: $brand-starcolor;
+        }
+    }
+}
+
+.deliver_cargo_comfirm {
+    border-top: 1px solid #e6e6e6;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    // padding: 0 20px;
+    height: 40px;
+    background: #fff;
+}
+
+.total_num {
+    color: #333;
+    padding-left: 20px;
+    p {
+        line-height: normal;
+    }
+}
+
+.deliver_done {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    background: $brand-color;
+    &.disable {
+        background: #ddd;
+        color: #999;
+    }
+}
+
+.swipe_icon {
+    .iconfont {
+        font-size: 30px;
+    }
+}
+
+.mark {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+    line-height: normal;
+    font-size: 10vw;
+    color: $brand-color;
+}
+
+.chaibao {
+    display: block;
+    position: absolute;
+    left: 45%;
+    top: 0;
+    line-height: normal;
+    font-size: 36px;
+    color: $brand-starcolor;
+}
+
+.icon_checked {
+    color: $brand-color;
+}
+
+.imgtype_list {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    overflow: hidden;
+    // text-align: center;
+    li {
+        display: inline-block;
+        padding: 1px 10px;
+        background: $brand-color;
+        color: #fff;
+        margin: 0 10px 10px;
+        border-radius: 3px;
+    }
+}
+
+.addPic {
+    font-size: 14px;
+}
+
+.op_btn {
+    position: fixed;
+    bottom: 50px;
+    right: 10px;
+    z-index: 1;
+    background: $brand-color;
+    border: 1px solid #ddd;
+    display: block;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 45px;
+    span {
+        color: #fff;
+    }
+    .iconfont {
+        font-size: 24px;
+        color: #fff;
+    }
+    &.sanheng {
+        z-index: 2;
+    }
+    &.add {
+        background: $brand-starcolor;
+        bottom: 94px;
+        right: 55px;
+    }
+    &.search {
+        background: $brand-starcolor;
+        bottom: 115px;
+        right: 5px;
+    }
+    &.cargoCart {
+        bottom: 80px;
+        background: #fff;
+        .iconfont {
+            color: $brand-starcolor;
+        }
+        .number {
+            position: absolute;
+            top: 7px;
+            right: 2px;
+        }
+    }
+    &.cart {
+        background: $brand-starcolor;
+        bottom: 45px;
+        right: 72px;
+        .number {
+            position: absolute;
+            top: 7px;
+            right: 2px;
+        }
+    }
+}
+
+.cargo_edit {
+    .weui-cell {
+        padding: 5px 10px;
+    }
+}
+
+.chaibao_btn {
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+    background: $brand-starcolor;
+}

@@ -1,0 +1,55 @@
+.full_header_title.vux-header {
+  .vux-header-title {
+    margin: 0;
+  }
+}
+
+.sp-title {
+  padding: 5px 10px;
+  .iconfont {
+    color: #479CF7;
+  }
+}
+
+.fundList {
+  li {
+    background: #fff;
+    margin-bottom: 10px;
+    .footer {
+      overflow: hidden;
+      padding: 10px;
+      span {
+        margin-right: 2px;
+      }
+      .tip {
+        font-size: 12px;
+        padding: 0 2px;
+        border-radius: 3px;
+      }
+    }
+    .content {
+      font-size: 14px;
+      color:#666;
+      padding: 10px;
+      border-bottom: 1px solid #f2f2f2;
+      .ratio {
+        span{font-size: 34px;}
+
+        color: #FF0000;
+      }
+    }
+  }
+}
+
+.noData {
+  text-align: center;
+}
+
+body .vux-popup-right {
+  width: auto;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: auto;
+}

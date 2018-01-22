@@ -1,0 +1,388 @@
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-size: 14px;
+  background: #fff;
+  line-height: 1.6;
+  font-family: "Microsoft YaHei", -apple-system-font, "Helvetica Neue", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a img {
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.clearfix {
+}
+
+.clearfix:before {
+}
+
+.clearfix:after {
+}
+
+.text-center {
+  text-align: center;
+}
+
+.label_font {
+  color: #aaa;
+  padding-right: 10px;
+}
+
+.label_icon {
+  color: $brand-starcolor;
+  // vertical-align: -2px;
+  margin-right: 5px;
+}
+
+.label_icon2 {
+  color: #eee;
+  // vertical-align: -2px;
+  margin-right: 5px;
+}
+
+.weui-tabbar {
+  overflow: hidden;
+}
+
+i.weui-tabbar__icon,
+.weui-tabbar__icon > i {
+  line-height: normal;
+}
+
+.mu-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.cred {
+  color: #EF7575;
+}
+
+.c999 {
+  color: #999;
+}
+
+.animated {
+  transition: .5s;
+  -moz-transition: .5s;
+  /* Firefox 4 */
+  -webkit-transition: .5s;
+  /* Safari 和 Chrome */
+  -o-transition: .5s;
+  /* Opera */
+}
+
+.centernBox {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  padding-bottom: 55px;
+  padding-top: 46px;
+  overflow: scroll;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.slide {
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: max-height .5s cubic-bezier(0, 1, 0, 1) -.1s;
+  transition: max-height .5s cubic-bezier(0, 1, 0, 1) -.1s;
+}
+
+.animate {
+  max-height: 9999px;
+  -webkit-transition-timing-function: cubic-bezier(0.5, 0, 1, 0);
+  transition-timing-function: cubic-bezier(0.5, 0, 1, 0);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.checker_item {
+  width: 60px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  margin-right: 6px;
+}
+
+#main_page {
+
+  .weui-cells {
+    font-size: 16px;
+  }
+  .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon,
+  .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon > i,
+  .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
+    color: $brand-color;
+  }
+  .vux-header .vux-header-left .left-arrow:before {
+    border-color: #fff;
+  }
+  .title-tips {
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 12px;
+  }
+  .tip-success {
+    background: #09A909;
+    color: #fff;
+  }
+  .tip-warning {
+    background: #E1CE07;
+    color: #fff;
+  }
+  .tip-danger {
+    background: #FF0000;
+    color: #fff;
+  }
+  .tip-info {
+    background: #479CF7;
+    color: #fff;
+  }
+  .text-gray {
+    color: #aaa;
+  }
+  .text-success {
+    color: #09A909;
+  }
+  .text-warning {
+    color: #E1CE07;
+  }
+  .text-danger {
+    color: #FF0000;
+  }
+  .text-info {
+    color: #479CF7;
+  }
+  .viewbox {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+  }
+  .positionHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+  }
+}
+
+.absolute-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.vux-x-dialog .weui-dialog__btn_primary {
+  color: $brand-starcolor;
+}
+
+.vux-popup-picker-container .vux-popup-picker-header {
+  color: $brand-color;
+}
+
+.scroller-component .scroller-indicator {
+  background-image: linear-gradient(to bottom, #F7A99F, #F7A99F, transparent, transparent), linear-gradient(to top, #F7A99F, #F7A99F, transparent, transparent);
+}
+
+.dialog_btn {
+  background-color: #eee;
+  border-top: 1px solid #d6d6d6;
+  color: #333;
+  padding: 10px 0;
+  text-align: center;
+  // display: flex;
+  div {
+    // flex: 1;
+    text-align: center;
+  }
+}
+
+.addtoCart {
+  padding: 3px 0;
+  border-radius: 3px;
+  text-align: center;
+  color: #fff;
+  background: $brand-color;
+}
+
+.addtoCart_done {
+  padding: 3px 0;
+  border-radius: 3px;
+  text-align: center;
+  color: #fff;
+  background: #F7A99F;
+}
+
+.btn_success {
+  background: $brand-starcolor;
+  color: #fff;
+}
+
+.btn_cancel {
+  background: #F9F4F4;
+}
+
+.pkg_position {
+  margin-right: 10px;
+}
+
+/**
+* vue-router transition
+*/
+
+.router-view {
+  background: #f2f2f2;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 53px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  backface-visibility: hidden;
+}
+
+.vux-pop-out-enter-active,
+.vux-pop-out-leave-active,
+.vux-pop-in-enter-active,
+.vux-pop-in-leave-active {
+  will-change: transform;
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.vux-pop-out-enter-active {
+  animation-name: popInLeft;
+}
+
+.vux-pop-out-leave-active {
+  animation-name: popOutRight;
+}
+
+.vux-pop-in-enter-active {
+  perspective: 1000;
+  animation-name: popInRight;
+}
+
+.vux-pop-in-leave-active {
+  animation-name: popOutLeft;
+}
+
+@keyframes popInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes popOutLeft {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes popInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes popOutRight {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-active {
+  transform: translateX(10px);
+  opacity: 0;
+}

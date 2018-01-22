@@ -1,0 +1,6 @@
+{
+"http://localhost:9090/api/app/userInfo":"userInfo",
+"http://localhost:9090/api/app/login":"login",
+"http://localhost:9090/api/app/logout":"logout",
+"http://localhost:9090/api/app/list":"list"
+}
