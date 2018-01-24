@@ -17,7 +17,7 @@ if (process.env.NODE_ENV == 'development') {
   // baseUrl = 'http://192.168.1.224:8071';
   routerMode = 'hash'
 } else {
-  baseUrl = 'http://wms.cld.net.cn';
+  baseUrl = 'http://120.78.65.165/';
   // baseUrl = 'http://pc-leo:8071';
   // baseUrl = 'http://cld-csq:8066'
   routerMode = 'hash'

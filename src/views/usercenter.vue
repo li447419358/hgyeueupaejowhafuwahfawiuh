@@ -108,7 +108,14 @@
     methods: {
       getUserInfo() {
         var _this = this;
-        api.getUserInfo().then(function (data) {
+        var pointer = {
+          sql_class: " zm_Orders ",
+          sql_top: "",
+          sql_colums: " theName,mobile, jine ",
+          sql_whereBy: "and huiyuan =username",
+          sql_orderBy: ""
+        }
+        api.getData(pointer).then(function (data) {
           _this.$store.dispatch('setLoading', false);
           if (data.code == 200) {
             _this.userMsg = data.result;

@@ -14,24 +14,29 @@
         <div class="content">
           <flexbox :gutter="0" align="center" justify="space-around">
             <flexbox-item class="ratio">
-              <span>{{item.value}}</span>
+              <span>{{item.currentvalue}}</span>
             </flexbox-item>
             <flexbox-item>
-              {{item.cycle}}天
-              <br>{{item.total}}
+              <span>{{item.Basevalue}}</span>
+              <br>
+              <span>初始净值</span>
             </flexbox-item>
             <flexbox-item>
-              {{item.state}}
+              {{item.productcycle}}天
+            </flexbox-item>
+            <flexbox-item>
+              {{item.productscale}}
+              <br><span>募集规模</span>
             </flexbox-item>
             <flexbox-item :span="3">
               <x-circle :percent="80" :stroke-width="6" :trail-width="6" stroke-color="#FF0000" trail-color="#ececec">
-                <span style="color:#FF0000;font-size: 28px;">抢</span>
+                <span style="color:#FF0000;font-size: 14px;">{{item.status}}</span>
               </x-circle>
             </flexbox-item>
           </flexbox>
         </div>
         <div class="footer">
-          <p class="fl">{{item.name}}</p>
+          <p class="fl">董基金</p>
           <p class="fr"><span class="tip tip-info">零风险</span><span class="tip tip-info">高收益</span><span
             class="tip tip-info">高回报</span></p>
         </div>
@@ -144,9 +149,16 @@
     methods: {
       getOverview() {
         var _this = this;
-        api.getOverView().then(function (data) {
-          if (data.code == 200) {
-            _this.overList = data.result;
+        var pointer = {
+          sql_class: " fundinfo ",
+          sql_top: "",
+          sql_colums: " Basevalue, currentvalue, productscale,productcycle, status",
+          sql_whereBy: "and id=5",
+          sql_orderBy: ""
+        }
+        api.getData(pointer).then(function (data) {
+          if (data.total > 0) {
+            _this.overList = data.rows;
           } else {
 
           }

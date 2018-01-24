@@ -35,6 +35,16 @@ export const setStore = (name, content) => {
   }
   window.localStorage.setItem(name, content);
 }
+/**
+ * sessionStorage
+ */
+export const setSessionStorage = (name, content) => {
+  if (!name) return;
+  if (typeof content !== 'string') {
+    content = JSON.stringify(content);
+  }
+  window.sessionStorage.setItem(name, content);
+}
 
 /**
  * 获取localStorage
@@ -43,6 +53,13 @@ export const getStore = name => {
   if (!name) return;
   return window.localStorage.getItem(name);
 }
+/**
+ * sessionStorage
+ */
+export const getSessionStorage = name => {
+  if (!name) return;
+  return window.sessionStorage.getItem(name);
+}
 export const getStore2JSON = name => {
   if (!name) return;
   let item = window.localStorage.getItem(name);
@@ -50,7 +67,14 @@ export const getStore2JSON = name => {
     return;
   }
   return JSON.parse(item) || "";
-
+}
+export const getSessionStorage2JSON = name => {
+  if (!name) return;
+  let item = window.sessionStorage.getItem(name);
+  if (!item || item == "undefined") {
+    return;
+  }
+  return JSON.parse(item) || "";
 }
 export const formatDate = (cdate, format) => {
   if (format && format.toUpperCase() == 'YYYY-MM-DD') {

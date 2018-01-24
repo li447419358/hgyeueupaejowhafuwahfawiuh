@@ -19,12 +19,8 @@ export const requestLogin = params => {
 export const logout = () => {
   return get(`${baseUrl}/api/app/logout`, {})
 };
-//获取用户信息
-export const getUserInfo = () => {
-  return get(`${baseUrl}/api/app/userInfo`, {})
-};
-//查询首页基金列表信息
-export const getOverView = params => {
-  return get(`${baseUrl}/api/app/list`, params)
+//获取信息
+export const getData = params => {
+  return post(`${baseUrl}/supformobileport.asp`, params)
 };
 
