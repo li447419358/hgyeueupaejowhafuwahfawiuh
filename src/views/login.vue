@@ -3,9 +3,9 @@
     <x-header :left-options="{showBack: true}" title="用户登录"></x-header>
     <div class="loginBox">
       <div class="logo">
-      <!--<img src="../../static/img/logo.jpg" alt=""/>-->
-      <p>董基金   更懂你</p>
-    </div>
+        <!--<img src="../../static/img/logo.jpg" alt=""/>-->
+        <p>董基金 更懂你</p>
+      </div>
 
       <x-input title="用户名" class="login_input" type="text" placeholder="用户名" v-model="params.username">
         <i class="iconfont icon-xingmingyonghumingnicheng" slot="label" style="padding-right:10px;display:block;"></i>
@@ -39,8 +39,8 @@
   import CryptoJS from 'crypto-js';
 
   import {
-    setStore,
-    getStore2JSON
+    getStore2JSON,
+    getSessionStorage2JSON
   } from '../config/util'
 
   export default {
@@ -54,6 +54,7 @@
     data() {
       return {
         type: 'password',
+        userInfo: '',
         params: {
           username: '',
           password: ''
@@ -66,21 +67,31 @@
       this.init();
     },
     activated() {
-      this.$store.dispatch('setLoading', false);
+      this.setLoading(false);
+
       this.init();
     },
     methods: {
+      getUserInfo(username) {
+        var _this = this;
+        var pointer = {
+          sql_class: " zm_Orders ",
+          sql_top: "",
+          sql_colums: " theName,mobile, jine ",
+          sql_whereBy: "and huiyuan =" + username,
+          sql_orderBy: ""
+        }
+        api.getData(pointer).then(function (data) {
+          if (data.total > 0) {
+            _this.$store.dispatch("setUserInfo", data.rows[0]);
+            _this.$router.replace("/usercenter")
+          } else {
+            _this.toast("warn", "用户名不存在或者密码错误！")
+          }
+        })
+      },
       toggleType() {
         this.type == 'text' ? this.type = 'password' : this.type = 'text';
-      },
-      rememberPassword() {
-        if (this.remember) {
-          setStore('loginInfo', this.params)
-        } else {
-          var loginInfo = JSON.parse(JSON.stringify(this.params));
-          loginInfo.password = '';
-          setStore('loginInfo', loginInfo)
-        }
       },
       init() {
         this.params = getStore2JSON('loginInfo') ? getStore2JSON('loginInfo') : {
@@ -91,7 +102,7 @@
       },
       doLogin() {
         //触发记住密码事件
-        this.rememberPassword();
+        // this.rememberPassword();
         var _this = this;
         let router = this.$router;
         let toast = this.$vux.toast;
@@ -101,25 +112,25 @@
           return;
         }
         _this.loginState = true;
+        var pointer = {
+          sql_class: " zm_huiyuan ",
+          sql_top: "",
+          sql_colums: " huiyuan, password ",
+          sql_whereBy: "and huiyuan =username ",
+          sql_orderBy: ""
+        }
         var param = {
           username: _this.params.username,
-          password: CryptoJS.SHA1(_this.params.password),
-          cId: _this.getStore('app_cid'),
-          lang: 'zh'
+          password: CryptoJS.MD5(_this.params.password),
         };
-        api.requestLogin(param).then(function (data) {
+        api.getData(param).then(function (data) {
           _this.loginState = false;
-          if (data.code == 200) {
-            _this.toast('success', data.msg);
-            _this.$store.dispatch('setUserInfo', data.result);
-            router.push("/");
-          } else if (data.code == 300) {
-            _this.toast('warn', data.msg);
+          if (data.total > 0) {
+            _this.getUserInfo(111);
           } else {
-            _this.toast('warn', '登录失败');
-
+            _this.toast("warn", "用户名不存在或者密码错误！")
           }
-          ;
+
         })
       },
       toast: function (type, text, width) {

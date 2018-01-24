@@ -29,13 +29,19 @@
     }
     .content {
       font-size: 14px;
-      color:#666;
+      color: #666;
       padding: 10px;
       border-bottom: 1px solid #f2f2f2;
       .ratio {
-        span{font-size: 34px;}
+        span {
+          font-size: 34px;
+        }
 
         color: #FF0000;
+      }
+      .label {
+        font-size: 12px;
+        color: #999;
       }
     }
   }

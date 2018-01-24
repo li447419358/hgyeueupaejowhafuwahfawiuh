@@ -7,10 +7,10 @@
  */
 let baseUrl;
 let routerMode;
-const imgBaseUrl = 'http://wms.cld.net.cn';
+const updateUrl = '120.78.65.165';
 
 if (process.env.NODE_ENV == 'development') {
-  baseUrl = 'http://120.78.65.165/';
+  baseUrl = 'http://120.78.65.165';
   // baseUrl = 'http://cld-109:8081';
   // baseUrl = 'http://cld-110:8090';
   //   baseUrl = 'http://wms.cld.net.cn';
@@ -26,5 +26,5 @@ if (process.env.NODE_ENV == 'development') {
 export {
   baseUrl,
   routerMode,
-  imgBaseUrl
+  updateUrl
 }

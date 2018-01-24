@@ -2,12 +2,12 @@
  * Created by Arker on 2017-04-13.
  */
 import {setStore} from '../../config/util'
-import {baseUrl} from '../../config/env'
+import {updateUrl} from '../../config/env'
 
 let wgtVer = null;
-const checkUrl = "http://update.macld.com/wms/moble/version";
-const wgtUrl = "http://update.macld.com/wms/moble/update.wgt";
-const apkUrl = "http://update.macld.com/wms/moble/app.apk";
+const checkUrl = updateUrl + "/version";
+const wgtUrl = updateUrl + "/update.wgt";
+const apkUrl = updateUrl + "/app.apk";
 
 // 更新应用资源
 function installWgt(path) {

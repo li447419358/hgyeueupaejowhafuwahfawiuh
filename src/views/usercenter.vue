@@ -8,8 +8,8 @@
       <div class="userInfo">
         <div class="item fl text-right">{{userMsg.userName}}</div>
         <div class="item fr text-right">
-          {{userMsg.name}}
-          <p>{{userMsg.tel}}</p>
+          {{userInfo.name}}
+          <p>{{userInfo.tel}}</p>
         </div>
       </div>
       <img class="userHeaderImg" src="../../static/img/bg.png" alt="">
@@ -17,7 +17,7 @@
     <div class="userZone">
       <flexbox>
         <flexbox-item class="userZone-item">
-          <p class="value text-danger">{{userMsg.value}}</p>
+          <p class="value text-danger">{{userInfo.value}}</p>
           <p class="label">份额（元）</p>
         </flexbox-item>
         <flexbox-item class="userZone-item">
@@ -50,17 +50,24 @@
 </template>
 <style></style>
 <script>
-  import XHeader from 'vux/src/components/x-header'
-  import Cell from 'vux/src/components/cell'
-  import Popup from 'vux/src/components/popup'
-  import Group from 'vux/src/components/group'
-  import XButton from 'vux/src/components/x-button'
-  import Badge from 'vux/src/components/badge'
-  import {Flexbox, FlexboxItem} from 'vux'
+  import {
+    Flexbox,
+    FlexboxItem,
+    XHeader,
+    Cell,
+    Popup,
+    Group,
+    XButton,
+    Badge
+  } from 'vux'
   import api from '../config/'
   import {
     checkUpdate
   } from '../assets/js/update'
+  import {
+
+    getSessionStorage2JSON
+  } from '../config/util'
 
   export default {
     name: "usercenter",
@@ -97,45 +104,27 @@
         } else {
           return false
         }
+      },
+      userInfo(){
+        return this.$store.state.userInfo
       }
     },
 
     created() {
     },
     activated() {
-      this.getUserInfo();
+      if (getSessionStorage2JSON('userInfo')) {
+
+      } else {
+        this.$router.replace("/login");
+      }
     },
     methods: {
-      getUserInfo() {
-        var _this = this;
-        var pointer = {
-          sql_class: " zm_Orders ",
-          sql_top: "",
-          sql_colums: " theName,mobile, jine ",
-          sql_whereBy: "and huiyuan =username",
-          sql_orderBy: ""
-        }
-        api.getData(pointer).then(function (data) {
-          _this.$store.dispatch('setLoading', false);
-          if (data.code == 200) {
-            _this.userMsg = data.result;
-            _this.$store.dispatch("setUserInfo", data.result);
-          }
-        })
-      },
+
       doLogout() {
         var _this = this;
         let router = this.$router;
-        //退出登录
-        api.logout().then(function (data) {
-          if (data.code == '200') {
-            _this.toast('success', '退出登录成功！', '12em');
-            router.push("/login");
-          }
-        }).catch(function (result) {
-          _this.toast('warn', '退出登录失败！', '12em');
-        })
-
+        router.push("/login");
       },
       docheckUpdate() {
         if (this.checkSupport()) {

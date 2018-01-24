@@ -12,25 +12,26 @@
     <ul class="fundList">
       <li v-for="item in overList">
         <div class="content">
-          <flexbox :gutter="0" align="center" justify="space-around">
-            <flexbox-item class="ratio">
-              <span>{{item.currentvalue}}</span>
-            </flexbox-item>
-            <flexbox-item>
+          <flexbox :gutter="0" align="flex-end">
+            <flexbox-item class="ratio" style="text-align: center">
               <span>{{item.Basevalue}}</span>
-              <br>
-              <span>初始净值</span>
+              <p class="label">当前净值</p>
             </flexbox-item>
-            <flexbox-item>
-              {{item.productcycle}}天
+            <flexbox-item style="text-align: center">
+              <span>{{item.currentvalue}}</span>
+              <p class="label">初始净值</p>
             </flexbox-item>
-            <flexbox-item>
+            <flexbox-item style="text-align: center">
               {{item.productscale}}
-              <br><span>募集规模</span>
+              <p class="label">募集规模</p>
             </flexbox-item>
-            <flexbox-item :span="3">
+            <flexbox-item style="text-align: center">
+              {{item.productcycle}}天
+              <p class="label">产品周期</p>
+            </flexbox-item>
+            <flexbox-item :span="2" style="text-align: center">
               <x-circle :percent="80" :stroke-width="6" :trail-width="6" stroke-color="#FF0000" trail-color="#ececec">
-                <span style="color:#FF0000;font-size: 14px;">{{item.status}}</span>
+                <span style="color:#FF0000;font-size: 12px;">{{item.status}}</span>
               </x-circle>
             </flexbox-item>
           </flexbox>
@@ -157,7 +158,9 @@
           sql_orderBy: ""
         }
         api.getData(pointer).then(function (data) {
+          console.log(data)
           if (data.total > 0) {
+            console.log(data.rows)
             _this.overList = data.rows;
           } else {
 
