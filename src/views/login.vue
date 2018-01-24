@@ -120,6 +120,7 @@
           sql_orderBy: ""
         }
         var param = {
+
           username: _this.params.username,
           password: CryptoJS.MD5(_this.params.password),
         };
