@@ -135,6 +135,7 @@ export const post = (url, params) => {
   return axios({
     url: url,
     method: 'post',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     data: params,
     transformRequest: [function (data) {
       return toUrlParams(data)
