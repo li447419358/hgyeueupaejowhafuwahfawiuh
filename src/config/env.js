@@ -7,7 +7,7 @@
  */
 let baseUrl;
 let routerMode;
-const updateUrl = '120.78.65.165';
+const updateUrl = 'http://120.78.65.165';
 
 if (process.env.NODE_ENV == 'development') {
   baseUrl = 'http://120.78.65.165';

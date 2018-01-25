@@ -131,9 +131,7 @@
       }
     },
     activated() {
-      var _this = this;
-      _this.setLoading(false);
-      _this.getOverview();
+      this.getOverview();
     },
     computed: {
       userInfo() {
@@ -158,16 +156,14 @@
           sql_orderBy: ""
         }
         api.getData(pointer).then(function (data) {
-          console.log(data)
+          _this.setLoading(false);
           if (data.total > 0) {
-            console.log(data.rows)
             _this.overList = data.rows;
           } else {
 
           }
-          _this.$store.dispatch('setLoading', false);
         }).catch(function () {
-          _this.$store.dispatch('setLoading', false);
+          _this.setLoading(false);
         })
       },
     }

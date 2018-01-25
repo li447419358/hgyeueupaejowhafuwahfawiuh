@@ -112,19 +112,11 @@
           return;
         }
         _this.loginState = true;
-        var pointer = {
-          sql_class: " zm_huiyuan ",
-          sql_top: "",
-          sql_colums: " huiyuan, password ",
-          sql_whereBy: "and huiyuan =username ",
-          sql_orderBy: ""
-        }
         var param = {
-
           username: _this.params.username,
           password: CryptoJS.MD5(_this.params.password),
         };
-        api.getData(param).then(function (data) {
+        api.doLogin(param).then(function (data) {
           _this.loginState = false;
           if (data.total > 0) {
             _this.getUserInfo(111);

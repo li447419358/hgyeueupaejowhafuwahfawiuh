@@ -16,4 +16,8 @@ import {
 export const getData = params => {
   return post(`${baseUrl}/supformobileport.asp`, params)
 };
+//获取信息
+export const doLogin = params => {
+  return post(`${baseUrl}/mobilelogin.asp`, params)
+};
 
