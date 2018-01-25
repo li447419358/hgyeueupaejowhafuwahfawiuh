@@ -7,7 +7,7 @@ import {updateUrl} from '../../config/env'
 let wgtVer = null;
 const checkUrl = updateUrl + "/version";
 const wgtUrl = updateUrl + "/update.wgt";
-const apkUrl = updateUrl + "/app.apk";
+const apkUrl = updateUrl + "/uploadfiles/files/app.apk";
 
 // 更新应用资源
 function installWgt(path) {
