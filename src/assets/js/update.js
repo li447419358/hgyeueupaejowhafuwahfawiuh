@@ -5,7 +5,7 @@ import {setStore} from '../../config/util'
 import {updateUrl} from '../../config/env'
 
 let wgtVer = null;
-const checkUrl = updateUrl + "/version";
+const checkUrl = updateUrl + "/version.json";
 const wgtUrl = updateUrl + "/update.wgt";
 const apkUrl = updateUrl + "/uploadfiles/files/app.apk";
 
@@ -50,9 +50,15 @@ function checkAndUpdate() {
       case 4:
         //              window.plus.nativeUI.closeWaiting();
         if (xhr.status == 200) {
-          var newVer = xhr.responseText;
+          // var data = eval(xhr.responseText) ;
+          var dataObj = eval("(" + xhr.responseText + ")");//转换为json对象;
+
+          var newVer = dataObj.version;
+          var content = dataObj.content;
+
+          // console.log(dataObj, newVer, wgtVer);
           if (wgtVer && newVer && (wgtVer != newVer)) {
-            window.plus.nativeUI.confirm("发现新版本是否立即更新？", function (event) {
+            window.plus.nativeUI.confirm(content, function (event) {
               if (0 == event.index) {
                 downWgt();
               }
