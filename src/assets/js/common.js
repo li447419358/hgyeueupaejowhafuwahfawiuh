@@ -19,7 +19,7 @@ function appkey() {
 
     var path = store.state.route.path;
 
-    if (!/(^\/$|^\/login$|^\/usercenter$|^\/search$)/.test(path)) {
+    if (!/(^\/usercenter$|^\/)/.test(path)) {
       router.go(-1)
     } else {
       if (backCount++ >= 1 && path == currentPage) {

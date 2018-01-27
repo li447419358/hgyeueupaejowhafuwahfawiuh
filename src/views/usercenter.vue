@@ -2,26 +2,38 @@
   <div style="height: 100%;">
     <div class="userHeader">
       <x-header :left-options="{showBack: false,backText: ''}" class="header">个人中心</x-header>
-      <div class="userAvatar">
-        <img src="../../static/img/avatar.jpg">
-      </div>
-      <div class="userInfo">
-        <div class="item fl text-right">{{userMsg.userName}}</div>
-        <div class="item fr text-right">
-          {{userInfo.name}}
+      <group :gutter="0">
+        <cell style="padding: 0">
+          <div class="userAvatar" slot="icon">
+            <img src="../../static/img/avatar.jpg">
+          </div>
+          <div slot="title" class="userInfo" style="">
+            <p>{{userInfo.theName}}</p>
+            <p>{{userInfo.mobile}}</p>
+          </div>
+        </cell>
+      </group>
+      <!--<div class="userInfo">
+        <div class="item fl">{{userMsg.theName}}李白</div>
+        <div class="item fr">
+          12811112222
           <p>{{userInfo.tel}}</p>
         </div>
-      </div>
+      </div>-->
       <img class="userHeaderImg" src="../../static/img/bg.png" alt="">
     </div>
     <div class="userZone">
-      <flexbox>
+      <flexbox align="flex-end">
         <flexbox-item class="userZone-item">
-          <p class="value text-danger">{{userInfo.value}}</p>
-          <p class="label">份额（元）</p>
+          <p class="value text-danger">{{currentvalue}}</p>
+          <p class="label">净值（元）</p>
         </flexbox-item>
         <flexbox-item class="userZone-item">
-          <p class="value">20000</p>
+          <p class="value">{{userInfo.jine/currentvalue}}</p>
+          <p class="label"> 份额（元）</p>
+        </flexbox-item>
+        <flexbox-item class="userZone-item">
+          <p class="value">{{userInfo.jine}}</p>
           <p class="label">资产总额（元）</p>
         </flexbox-item>
       </flexbox>
@@ -107,14 +119,23 @@
       },
       userInfo() {
         return this.$store.state.userInfo
+      },
+      currentvalue() {
+        return this.$store.state.dfund.length > 0 ? this.$store.state.dfund[0].currentvalue : 0
       }
     },
 
     created() {
+      this.setLoading(false)
+      if (getSessionStorage2JSON('userInfo')) {
+
+      } else {
+        this.$router.replace("/login");
+      }
     },
     activated() {
+      this.setLoading(false);
       if (getSessionStorage2JSON('userInfo')) {
-        this.getUserInfo();
       } else {
         this.$router.replace("/login");
       }

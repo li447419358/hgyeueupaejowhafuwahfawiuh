@@ -9,6 +9,7 @@ Vue.use(Vuex);
 const state = {
   userInfo: getSessionStorage2JSON("userInfo") ? getSessionStorage2JSON("userInfo") : {}, //用户信息
   isLoading: true,
+  dfund: []
 }
 
 export default new Vuex.Store({

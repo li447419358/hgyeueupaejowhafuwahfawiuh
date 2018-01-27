@@ -19,10 +19,10 @@
       </x-input>
       <x-button class="login_btn" @click.native="doLogin" :show-loading="loginState" :disabled="loginState">登录
       </x-button>
-      <div class="signup">
+      <!--<div class="signup">
         <span>忘记密码</span>
         <span class="fr">注册</span>
-      </div>
+      </div>-->
     </div>
   </div>
 </template>
@@ -103,7 +103,7 @@
           _this.loginState = false;
           if (data.code == 200) {
             _this.toast("success", "登录成功！")
-            _this.$store.dispatch("setUserInfo", data.result);
+            _this.$store.dispatch("setUserInfo", data.result[0]);
             _this.$router.replace("/usercenter");
           } else {
             _this.toast("warn", "用户名不存在或者密码错误！")

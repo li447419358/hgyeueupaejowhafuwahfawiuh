@@ -6,6 +6,10 @@ export default {
     state.userInfo = info;
     setSessionStorage("userInfo", info)
   },
+  SET_DFUND(state, info) {
+    state.dfund = info;
+    setSessionStorage("dfund", info)
+  },
   updateLoadingStatus(state, payload) {
     state.isLoading = payload
   },

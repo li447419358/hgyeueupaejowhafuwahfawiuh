@@ -157,8 +157,9 @@
         }
         api.getData(pointer).then(function (data) {
           _this.setLoading(false);
-          if (data.code > 200) {
-            _this.overList = data.result;
+          if (data.total > 0) {
+            _this.overList = data.rows;
+            _this.$store.dispatch("setDfund", data.rows);
           } else {
 
           }
