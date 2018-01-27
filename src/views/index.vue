@@ -157,8 +157,8 @@
         }
         api.getData(pointer).then(function (data) {
           _this.setLoading(false);
-          if (data.total > 0) {
-            _this.overList = data.rows;
+          if (data.code > 200) {
+            _this.overList = data.result;
           } else {
 
           }

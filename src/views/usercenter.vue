@@ -65,7 +65,7 @@
     checkUpdate
   } from '../assets/js/update'
   import {
-
+    setSessionStorage2JSON,
     getSessionStorage2JSON
   } from '../config/util'
 
@@ -105,7 +105,7 @@
           return false
         }
       },
-      userInfo(){
+      userInfo() {
         return this.$store.state.userInfo
       }
     },
@@ -114,17 +114,28 @@
     },
     activated() {
       if (getSessionStorage2JSON('userInfo')) {
-
+        this.getUserInfo();
       } else {
         this.$router.replace("/login");
       }
     },
     methods: {
-
+      getUserInfo(username) {
+        var _this = this;
+        api.getData(pointer).then(function (data) {
+          if (data.total > 0) {
+            _this.$store.dispatch("setUserInfo", data.rows[0]);
+            _this.$router.replace("/usercenter")
+          } else {
+            _this.toast("warn", "用户名不存在或者密码错误！")
+          }
+        })
+      },
       doLogout() {
         var _this = this;
         let router = this.$router;
-        router.push("/login");
+        this.$store.dispatch("setUserInfo", '');
+        router.replace("/login");
       },
       docheckUpdate() {
         if (this.checkSupport()) {

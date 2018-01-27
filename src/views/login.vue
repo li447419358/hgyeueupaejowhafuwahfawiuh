@@ -72,24 +72,7 @@
       this.init();
     },
     methods: {
-      getUserInfo(username) {
-        var _this = this;
-        var pointer = {
-          sql_class: " zm_Orders ",
-          sql_top: "",
-          sql_colums: " theName,mobile, jine ",
-          sql_whereBy: "and huiyuan =" + username,
-          sql_orderBy: ""
-        }
-        api.getData(pointer).then(function (data) {
-          if (data.total > 0) {
-            _this.$store.dispatch("setUserInfo", data.rows[0]);
-            _this.$router.replace("/usercenter")
-          } else {
-            _this.toast("warn", "用户名不存在或者密码错误！")
-          }
-        })
-      },
+
       toggleType() {
         this.type == 'text' ? this.type = 'password' : this.type = 'text';
       },
@@ -114,12 +97,14 @@
         _this.loginState = true;
         var param = {
           username: _this.params.username,
-          password: CryptoJS.MD5(_this.params.password),
+          password: _this.params.password,
         };
         api.doLogin(param).then(function (data) {
           _this.loginState = false;
-          if (data.total > 0) {
-            _this.getUserInfo(111);
+          if (data.code == 200) {
+            _this.toast("success", "登录成功！")
+            _this.$store.dispatch("setUserInfo", data.result);
+            _this.$router.replace("/usercenter");
           } else {
             _this.toast("warn", "用户名不存在或者密码错误！")
           }
