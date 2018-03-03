@@ -5,6 +5,7 @@ import store from '../vuex/store'
 import login from '../views/login'
 import index from '../views/index'
 import usercenter from '../views/usercenter'
+import register from '../views/register'
 
 
 Vue.use(Router)
@@ -14,10 +15,13 @@ const router = new Router({
     path: '/',
     component: index
   },
-    
+
     {
       path: '/login',
       component: login
+    },{
+      path: '/register',
+      component: register
     },
     {
       path: '/usercenter',

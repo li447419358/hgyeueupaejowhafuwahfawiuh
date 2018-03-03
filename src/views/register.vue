@@ -1,29 +1,23 @@
 <template>
   <view-box class="viewbox" body-padding-top="0" body-padding-bottom="0">
-    <x-header slot="header" :left-options="{showBack: true}" title="用户登录"></x-header>
-    <div class="loginBox">
-      <div class="logo">
-        <!--<img src="../../static/img/logo.jpg" alt=""/>-->
-        <p>董基金 更懂你</p>
-      </div>
+    <x-header :left-options="{showBack: true}" title="用户注册"></x-header>
+    <group>
+      <x-input title="用户名" v-model="params.username" required></x-input>
+      <x-input title="邀请码" v-model="params.code" placeholder="请输入推荐人的邀请码"></x-input>
+      <x-input title="电子邮箱" v-model="params.email" is-type="email" placeholder="请输入联系邮箱"></x-input>
+      <x-input title="密码" v-model="params.password" type="password" :min="6" placeholder="密码最少6位"></x-input>
+      <x-input title="确认密码" v-model="params.password2" type="password" :equal-with="params.password"
+               placeholder="再次确认密码"></x-input>
+      <cell>
+        <span slot="icon"><input type="checkbox" v-model="params.agreement"/>我同意《<span
+          class="text-gray">注册协议</span>》及《<span class="text-gray">投资服务协议</span>》</span>
+      </cell>
+    </group>
 
-      <x-input title="用户名" class="login_input" type="text" placeholder="用户名" v-model="params.username">
-        <i class="iconfont icon-xingmingyonghumingnicheng" slot="label" style="padding-right:10px;display:block;"></i>
-      </x-input>
-      <x-input title="密码" class="login_input" :type="type" placeholder="密码" v-model="params.password"
-               :show-clear="false"
-               @keyup.enter.native="doLogin">
-        <i class="iconfont icon-yanjing" slot="right" @click="toggleType" style="color: #B2B2B2;"
-           v-show="params.password"></i>
-        <i class="iconfont icon-icon--" slot="label" style="padding-right:10px;display:block;"></i>
-      </x-input>
-      <x-button class="login_btn" @click.native="doLogin" :show-loading="loginState" :disabled="loginState">登录
-      </x-button>
-      <div class="signup">
-        <!--<span>忘记密码</span>-->
-        <span class="fr" @click="$router.push('/register')">注册</span>
-      </div>
+    <div style="margin:10px;">
+      <x-button class="tip-success" @click.native="doRegister" :show-loading="loginState" :disabled="loginState">注册</x-button>
     </div>
+
   </view-box>
 </template>
 
@@ -33,8 +27,7 @@
     XInput,
     Group,
     XButton,
-    Cell,
-    ViewBox
+    Cell, ViewBox
   } from 'vux'
   import api from '../config/'
   import CryptoJS from 'crypto-js';
@@ -50,8 +43,7 @@
       XInput,
       Group,
       XButton,
-      Cell,
-      ViewBox
+      Cell, ViewBox
     },
     data() {
       return {
@@ -59,35 +51,26 @@
         userInfo: '',
         params: {
           username: '',
-          password: ''
+          code: "",
+          email: '',
+          password: '',
+          password2: '',
+          agreement: true
         },
         loginState: false,
         remember: false
       }
     },
     created() {
-      this.init();
     },
     activated() {
       this.setLoading(false);
-
-      this.init();
     },
     methods: {
-
       toggleType() {
         this.type == 'text' ? this.type = 'password' : this.type = 'text';
       },
-      init() {
-        this.params = getStore2JSON('loginInfo') ? getStore2JSON('loginInfo') : {
-          username: '',
-          password: ''
-        };
-        this.remember = this.params.password != '';
-      },
-      doLogin() {
-        //触发记住密码事件
-        // this.rememberPassword();
+      doRegister() {
         var _this = this;
         let router = this.$router;
         let toast = this.$vux.toast;
@@ -97,11 +80,7 @@
           return;
         }
         _this.loginState = true;
-        var param = {
-          username: _this.params.username,
-          password: _this.params.password,
-        };
-        api.doLogin(param).then(function (data) {
+        api.doRegister(this.params).then(function (data) {
           _this.loginState = false;
           if (data.code == 200) {
             _this.toast("success", "登录成功！")

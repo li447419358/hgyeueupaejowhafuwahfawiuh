@@ -14,11 +14,11 @@
         <div class="content">
           <flexbox :gutter="0" align="flex-end">
             <flexbox-item class="ratio" style="text-align: center">
-              <span>{{item.Basevalue}}</span>
+              <span>{{item.currentvalue}}</span>
               <p class="label">当前净值</p>
             </flexbox-item>
             <flexbox-item style="text-align: center">
-              <span>{{item.currentvalue}}</span>
+              <span>{{item.Basevalue}}</span>
               <p class="label">初始净值</p>
             </flexbox-item>
             <flexbox-item style="text-align: center">
