@@ -22,7 +22,7 @@
               <p class="label">初始净值</p>
             </flexbox-item>
             <flexbox-item style="text-align: center">
-              {{item.productscale}}
+              {{item.productscale}}万
               <p class="label">募集规模</p>
             </flexbox-item>
             <flexbox-item style="text-align: center">
@@ -141,7 +141,7 @@
     filters: {
       toNumber(value) {
         if (!value) return 0;
-        return Number(value);
+        return Number(value).toFixed(2);
       }
     },
 

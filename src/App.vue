@@ -52,7 +52,9 @@
       showFooter() {
         var login = /login/.test(this.route.path); //登录页
         var register = /register/.test(this.route.path); //盘点
-        return login || register
+        var reg_agreement = /reg_agreement/.test(this.route.path); //盘点
+        var inv_agreement = /inv_agreement/.test(this.route.path); //盘点
+        return login || register || reg_agreement || inv_agreement
       }
 
 

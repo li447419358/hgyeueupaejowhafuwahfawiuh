@@ -104,8 +104,18 @@
         api.doLogin(param).then(function (data) {
           _this.loginState = false;
           if (data.code == 200) {
-            _this.toast("success", "登录成功！")
-            _this.$store.dispatch("setUserInfo", data.result[0]);
+            _this.toast("success", "登录成功！");
+            if (data.result.length == 1) {
+              _this.$store.dispatch("setUserInfo", data.result[0]);
+            } else {
+              var defaultData = {
+                theName: _this.params.username,
+                mobile: "",
+                jine: 0,
+              }
+              _this.$store.dispatch("setUserInfo", defaultData);
+            }
+
             _this.$router.replace("/usercenter");
           } else {
             _this.toast("warn", "用户名不存在或者密码错误！")

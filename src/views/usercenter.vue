@@ -29,7 +29,7 @@
           <p class="label">净值（元）</p>
         </flexbox-item>
         <flexbox-item class="userZone-item">
-          <p class="value">{{userInfo.jine/currentvalue}}</p>
+          <p class="value">{{fene}}</p>
           <p class="label"> 份额（元）</p>
         </flexbox-item>
         <flexbox-item class="userZone-item">
@@ -121,7 +121,15 @@
         return this.$store.state.userInfo
       },
       currentvalue() {
-        return this.$store.state.dfund.length > 0 ? this.$store.state.dfund[0].currentvalue : 0
+        return this.$store.state.dfund.length > 0 ? this.$store.state.dfund[0].currentvalue : 1
+      },
+      fene() {
+        if (this.userInfo.jine == 0) {
+          return 0
+        } else {
+          var val = this.userInfo.jine / this.currentvalue;
+          return val.toFixed(3);
+        }
       }
     },
 

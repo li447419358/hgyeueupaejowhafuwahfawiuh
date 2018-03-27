@@ -39,23 +39,37 @@
       height: 1px;
     }
   }
-  .login_btn {
-    transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
-  }
-  .weui-btn_loading.weui-btn_primary,
-  button.login_btn,
-  button.login_btn:hover,
-  button.login_btn:focus,
-  button.login_btn:active {
-    color: #fff;
-    background-color: $brand-color;
-    border-radius: 2px;
-  }
+
+}
+
+.login_btn {
+  transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+}
+
+.weui-btn_loading.weui-btn_primary,
+button.login_btn,
+button.login_btn:hover,
+button.login_btn:focus,
+button.login_btn:active {
+  color: #fff;
+  background-color: $brand-color;
+  border-radius: 2px;
 }
 
 .signup {
   margin-top: 15px;
   color: #999;
   span {
+  }
+}
+
+.agreement {
+  padding: 10px 15px;
+  line-height: 1.5em;
+  .title {
+    padding: 10px 0 5px 0;
+  }
+  p {
+    margin-bottom: 5px;
   }
 }

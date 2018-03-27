@@ -13,11 +13,21 @@ let currentPage = '';
 
 //APP按键
 function appkey() {
-
+  // var first = null;
   window.plus.key.addEventListener("backbutton", function () {
 
-
-    var path = store.state.route.path;
+    //首次按键，提示‘再按一次退出应用’
+    /*    if (!first) {
+          first = new Date().getTime();
+          window.plus.nativeUI.toast("再按一次返回键关闭APP");
+          setTimeout(function () {
+            first = null;
+          }, 1000);
+        } else {
+          if (new Date().getTime() - first < 1000) {
+            window.plus.runtime.quit();
+          }
+        }*/
 
     if (!/(^\/usercenter$|^\/)/.test(path)) {
       router.go(-1)
@@ -27,7 +37,6 @@ function appkey() {
       } else {
         currentPage = path;
         window.plus.nativeUI.toast("再按一次返回键关闭APP");
-
       }
 
     }
