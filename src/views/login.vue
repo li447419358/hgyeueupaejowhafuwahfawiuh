@@ -74,7 +74,6 @@
       this.init();
     },
     methods: {
-
       toggleType() {
         this.type == 'text' ? this.type = 'password' : this.type = 'text';
       },
@@ -105,7 +104,7 @@
           _this.loginState = false;
           if (data.code == 200) {
             _this.toast("success", "登录成功！");
-            if (data.result.length == 1) {
+            if (data.result[0].hasOwnProperty('jine')) {
               _this.$store.dispatch("setUserInfo", data.result[0]);
             } else {
               var defaultData = {
